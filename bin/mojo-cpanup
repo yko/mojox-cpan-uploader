@@ -1,0 +1,56 @@
+#!/usr/bin/perl 
+
+# Copyright (C) 2010, Yaroslav Korshak.
+
+use strict;
+use warnings;
+
+require MojoX::CPAN::Uploader;
+
+use Getopt::Long;
+
+GetOptions(
+    'user=s' => \my($user),
+    'pass=s' => \my($pass)
+);
+
+my ($file, $subdir) = @ARGV;
+
+usage() unless $file;
+
+die "No such file '$file'" unless -f $file;
+
+unless (defined $user) {
+    print "Username: ";
+    while (!$user) {
+        $user = <STDIN>;
+        chomp($user);
+    }
+}
+
+unless (defined $pass) {
+    print "Password: ";
+    while (!$pass) {
+        $pass = <STDIN>;
+        chomp($pass);
+    }
+}
+
+my $up = MojoX::CPAN::Uploader->new;
+
+my $result = $up->auth($user, $pass)->upload($file, $subdir);
+
+exit;
+
+sub usage {
+    print <<END;
+Usage:
+    $0 --user=username --pass=password package.tar.gz subdir
+    $0 --user=username --pass=password package.tar.gz 
+    $0 --user=username package.tar.gz
+    $0 package.tar.gz
+END
+    exit;
+}
+
+1;
