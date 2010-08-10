@@ -10,6 +10,7 @@ my $builder = Module::Build->new(
     script_files      => ['bin/mojo-cpanup'],
     requires          => {
         'Mojolicious' => 0.999927,
+        'Term::ReadKey' => 0,
         'Test::More'  => 0,
         'version'     => 0,
     },
