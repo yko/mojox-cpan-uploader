@@ -6,6 +6,7 @@ use strict;
 use warnings;
 
 require MojoX::CPAN::Uploader;
+use Term::ReadKey;
 
 use Getopt::Long;
 
@@ -21,19 +22,21 @@ usage() unless $file;
 die "No such file '$file'" unless -f $file;
 
 unless (defined $user) {
-    print "Username: ";
     while (!$user) {
+        print "Username: ";
         $user = <STDIN>;
         chomp($user);
     }
 }
 
 unless (defined $pass) {
-    print "Password: ";
+    ReadMode 2;
     while (!$pass) {
+        print "Password: ";
         $pass = <STDIN>;
         chomp($pass);
     }
+    ReadMode 0;
 }
 
 my $up = MojoX::CPAN::Uploader->new;
