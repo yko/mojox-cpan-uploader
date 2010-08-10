@@ -38,7 +38,7 @@ sub auth {
 }
 
 sub upload {
-    my ($self, $file, $subdir)  = splice @_, 0, 3 ;
+    my ($self, $file, $subdir) = splice @_, 0, 3;
     my $url = $self->url->clone->userinfo($self->user . ':' . $self->pass);
 
     croak "Auth info required!" unless $self->user;
@@ -54,9 +54,11 @@ sub upload {
         @_
     );
 
+    return 1 if $tx->res->code == 200;
+
     if ($tx->res->code == 406) {
         my $reason = $tx->res->dom->at('blockquote.actionresponse');
-        my $title = $reason->at('h3');
+        my $title  = $reason->at('h3');
         $title = $title ? $title->all_text : 'unknown';
         my @p;
         my $table = 0;
@@ -73,8 +75,11 @@ sub upload {
 
         return Mojo::Exception->new(
             "Error '$title' " . $tx->res->code . "\n" . join("\n", @p, ''));
-    } elsif ($tx->res->code == 401) {
-        return Mojo::Exception->new("Wrong login/password for Perl Author '" . $self->user . "'");
+
+    }
+    elsif ($tx->res->code == 401) {
+        return Mojo::Exception->new(
+            "Wrong login/password for Perl Author '" . $self->user . "'");
     }
 
     return Mojo::Exception->new("Unknown error: " . $tx->res->code);

@@ -1,4 +1,4 @@
-use Test::More tests => 19;
+use Test::More tests => 17;
 use MIME::Base64;
 use Mojolicious::Lite;
 use Test::Mojo;
@@ -67,14 +67,12 @@ $up->auth('user', 'pass');
 
 my ($fh, $filename) = tempfile();
 
-my $tx = $up->upload($filename, undef);
+my $result = $up->upload($filename, undef);
 
-isa_ok($tx, 'Mojo::Transaction::HTTP');
-is($tx->res->body, 'OK');
+ok($result);
 
 $up->url->path('subdir');
 
-$tx = $up->upload($filename, 'someDir');
+$result = $up->upload($filename, 'someDir');
 
-isa_ok($tx, 'Mojo::Transaction::HTTP');
-is($tx->res->body, 'OK');
+ok($result);
