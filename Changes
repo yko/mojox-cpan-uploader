@@ -1,9 +1,12 @@
 Revision history for mojox-cpan-uploader
 
-0.0.1  Fri May 28 14:06:15 2010
-       Initial release.
+0.0.1    Fri May 28 14:06:15 2010
+         Initial release.
 
-0.0.2  The Aug 10 01:06:22 2010
-       vti forced me to do this
-       Deps fixes (vti)
-       Tests fixes (vti)
+0.0.2    The Aug 10 01:06:22 2010
+         vti forced me to do this
+         Deps fixes (vti)
+         Tests fixes (vti)
+
+0.01_2   The Aug 10 20:30:48 2010
+         Changed version numbering to match perlmodstyle
