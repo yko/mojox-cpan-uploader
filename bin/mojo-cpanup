@@ -37,6 +37,7 @@ unless (defined $pass) {
         chomp($pass);
     }
     ReadMode 0;
+    print "\n";
 }
 
 my $up = MojoX::CPAN::Uploader->new;
