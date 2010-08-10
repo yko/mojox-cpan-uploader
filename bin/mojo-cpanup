@@ -5,10 +5,10 @@
 use strict;
 use warnings;
 
-require MojoX::CPAN::Uploader;
 use Term::ReadKey;
-
 use Getopt::Long;
+
+require MojoX::CPAN::Uploader;
 
 GetOptions(
     'user=s' => \my($user),
