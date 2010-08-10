@@ -43,7 +43,7 @@ sub upload {
 
     croak "Auth info required!" unless $self->user;
 
-    return $self->client->post_form(
+    my $tx = $self->client->post_form(
         $url,
         {   %{$self->defaults},
             HIDDENNAME                 => $self->user,
@@ -53,6 +53,31 @@ sub upload {
         },
         @_
     );
+
+    if ($tx->res->code == 406) {
+        my $reason = $tx->res->dom->at('blockquote.actionresponse');
+        my $title = $reason->at('h3');
+        $title = $title ? $title->all_text : 'unknown';
+        my @p;
+        my $table = 0;
+        $reason->find('p')->each(
+            sub {
+                return $table = 1 if $_[0]->at('table');
+                my $t = shift->all_text;
+                $t =~ s/^\s+|\s$//g;
+                $t =~ s/[\n\r]/ /g;
+                $t =~ s/\s{2,}/ /g;
+                push @p, $t;
+            }
+        );
+
+        return Mojo::Exception->new(
+            "Error '$title' " . $tx->res->code . "\n" . join("\n", @p, ''));
+    } elsif ($tx->res->code == 401) {
+        return Mojo::Exception->new("Wrong login/password for Perl Author '" . $self->user . "'");
+    }
+
+    return Mojo::Exception->new("Unknown error: " . $tx->res->code);
 }
 
 

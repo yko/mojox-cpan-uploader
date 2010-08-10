@@ -44,6 +44,13 @@ my $up = MojoX::CPAN::Uploader->new;
 
 my $result = $up->auth($user, $pass)->upload($file, $subdir);
 
+if (ref $result) {
+    print $result . "\n";
+    exit;
+}
+
+print "File '$file' uploaded successfull " . ($subdir ? " to '$subdir'" : '') . "\n";
+
 exit;
 
 sub usage {
