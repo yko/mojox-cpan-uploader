@@ -25,7 +25,7 @@ __PACKAGE__->attr(
     }
 );
 
-our $VERSION = '0.01_2';
+our $VERSION = '0.01_3';
 
 sub auth {
     my $self = shift;
@@ -96,7 +96,7 @@ MojoX::CPAN::Uploader - Mojo way to upload on CPAN
 
 =head1 VERSION
 
-This document describes MojoX::CPAN::Uploader version 0.0.2
+This document describes MojoX::CPAN::Uploader version 0.1_3
 
 
 =head1 SYNOPSIS
