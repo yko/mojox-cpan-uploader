@@ -15,7 +15,7 @@ WriteMakefile(
         'Term::ReadKey' => 0,
         'Getopt::Long' => 0,
         'File::Spec' => 0,
-        'IPC::Run3' => 0,
+        'IPC::Open3' => 0,
         'Test::More' => 0,
         'version'    => 0,
     },
