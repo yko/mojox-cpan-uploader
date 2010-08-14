@@ -76,7 +76,6 @@ unless ($has_config || -f config_file) {
 
     # If no, we just create empty .pause and never ask again
     if (index('yes', $answer) >= 0) {
-        print "Writing!";
         print $PAUSE <<END
 password    $config->{password}
 user        $config->{user}
