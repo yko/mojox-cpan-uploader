@@ -89,6 +89,8 @@ exit;
 
 sub usage {
     print <<END;
+mojo-cpanup v. $MojoX::CPAN::Uploader::VERSION
+
 Usage:
     $0 --user=username --password=password package.tar.gz subdir
     $0 --user=username --password=password package.tar.gz 
