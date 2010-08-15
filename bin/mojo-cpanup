@@ -82,7 +82,7 @@ user        $config->{user}
 END
     } 
     close $PAUSE;
-    chmod('0600', config_file);
+    chmod(oct("0600"), config_file);
 }
 
 exit;
