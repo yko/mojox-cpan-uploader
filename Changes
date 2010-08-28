@@ -1,21 +1,21 @@
 Revision history for mojox-cpan-uploader
 
-0.0.1    Fri May 28 14:06:15 2010
-         Initial release.
+0.01_4   The Aug 14 22:53:35 2010
+         mojo-cpanup can save user details
+         Deps fixes
+         Tests fixes
+
+0.01_3   The Aug 11 00:01:05 2010
+         Verbose exceptions and errors
+
+0.01_2   The Aug 10 20:30:48 2010
+         Changed version numbering to match perlmodstyle
+         Test for mojo-cpanup
 
 0.0.2    The Aug 10 01:06:22 2010
          vti forced me to do this
          Deps fixes (vti)
          Tests fixes (vti)
 
-0.01_2   The Aug 10 20:30:48 2010
-         Changed version numbering to match perlmodstyle
-         Test for mojo-cpanup
-
-0.01_3   The Aug 11 00:01:05 2010
-         Verbose exceptions and errors
-
-0.01_4   The Aug 14 22:53:35 2010
-         mojo-cpanup can save user details
-         Deps fixes
-         Tests fixes
+0.0.1    Fri May 28 14:06:15 2010
+         Initial release.
