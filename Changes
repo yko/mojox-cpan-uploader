@@ -4,6 +4,7 @@ Revision history for mojox-cpan-uploader
          mojo-cpanup can save user details
          Deps fixes
          Tests fixes
+         Documentation
 
 0.01_3   The Aug 11 00:01:05 2010
          Verbose exceptions and errors

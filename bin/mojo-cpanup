@@ -77,8 +77,8 @@ unless ($has_config || -f config_file) {
     # If no, we just create empty .pause and never ask again
     if (index('yes', $answer) >= 0) {
         print $PAUSE <<END
-password    $config->{password}
 user        $config->{user}
+password    $config->{password}
 END
     } 
     close $PAUSE;
@@ -138,3 +138,62 @@ sub config {
 }
 
 1;
+__END__
+
+=head1 NAME
+
+mojo-cpanup - upload files on CPAN in Mojo way
+
+
+=head1 SYNOPSIS
+
+    mojo-cpanup file.tar.gz subdir_on_cpan_server
+
+
+=head1 DESCRIPTION
+
+This script uses power of L<Mojo::Client> to upload your files on CPAN.
+
+
+=head1 ARGUMENTS
+
+mojo-cpanup takes two arguments: 
+
+=over 4
+
+=item filename
+
+Name of local file which should be uploaded to CPAN.
+
+=item subdir
+
+Subdir on CPAN server in which file should be placed.
+
+=back
+
+=cut
+
+=head1 CONFIGURATION
+
+mojo-cpanup users same configuration file as L<CPAN::Uploader>.
+Config file stored in C<.pause> file in your home direfctory (~ or %USERPROFILE%)
+Example of config file:
+
+    user        yko
+    password    #############
+
+You don't need to create this file manually. On first successfull upload C<mojo-cpanup>
+will ask you if you want to store your creditionals in config.
+If you answer no - it will never ask you again.
+
+=head1 AUTHOR
+
+Yaroslav Korshak  C<< <ykorshak@gmail.com> >>
+
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 2010, Yaroslav Korshak C<< <ykorshak@gmail.com> >>. All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.

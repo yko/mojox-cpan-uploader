@@ -85,7 +85,6 @@ sub upload {
     return Mojo::Exception->new("Unknown error: " . $tx->res->code);
 }
 
-
 1;
 __END__
 
@@ -94,57 +93,44 @@ __END__
 MojoX::CPAN::Uploader - Mojo way to upload on CPAN
 
 
-=head1 VERSION
-
-This document describes MojoX::CPAN::Uploader version 0.1_3
-
-
 =head1 SYNOPSIS
 
     use MojoX::CPAN::Uploader;
+    my $up = MojoX::CPAN::Uploader->new;
 
-=for author to fill in:
-    Brief code example(s) here showing commonest usage(s).
-    This section will be as far as many users bother reading
-    so make it as educational and exeplary as possible.
-  
-  
+    $up->auth('pause_username', 'pause_password');
+    my $result = $up->upload('file.tar.gz', 'subdir_on_pause_server');
+
+    print ref $result ? "Error: $result\n" : "File uploaded\n";
+
+
 =head1 DESCRIPTION
 
-=for author to fill in:
-    Write a full description of the module and its features here.
-    Use subsections (=head2, =head3) as appropriate.
+This module uses power of L<Mojo::Client> to upload your files on CPAN.
 
 
-=head1 INTERFACE 
+=head1 METHODS
 
-=for author to fill in:
-    Write a separate section listing the public components of the modules
-    interface. These normally consist of either subroutines that may be
-    exported, or methods that may be called on objects belonging to the
-    classes provided by the module.
+L<MojoX::Cpan::Uploader> implements following methods:
 
-=head1 CONFIGURATION AND ENVIRONMENT
+=over 4
 
-=for author to fill in:
-    A full explanation of any configuration system(s) used by the
-    module, including the names and locations of any configuration
-    files, and the meaning of any environment variables or properties
-    that can be set. These descriptions must also include details of any
-    configuration language used.
-  
-MojoX::CPAN::Uploader requires no configuration files or environment variables.
+=item C<auth>
 
+Set user creditionals for PAUSE server. Takes 2 parameters: username and password.
+
+
+=item C<upload>
+
+Uploads file to CPAN server. Takes 2 parameters: 
+filename and subdir on CPAN server (optional).
+
+
+=back
 
 =head1 DEPENDENCIES
 
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
-
-None.
+L<Mojolicious>
 
 
 =head1 AUTHOR
@@ -158,4 +144,3 @@ Copyright (c) 2010, Yaroslav Korshak C<< <ykorshak@gmail.com> >>. All rights res
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
-
