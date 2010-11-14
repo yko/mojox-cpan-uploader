@@ -5,3 +5,5 @@
 .*\.swo$
 ^Makefile$
 ^\.git
+MANIFEST.+
+.*tar.gz
