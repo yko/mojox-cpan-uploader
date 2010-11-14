@@ -67,11 +67,13 @@ $up->auth('user', 'pass');
 
 my ($fh, $filename) = tempfile();
 
-my $result = $up->upload($filename, undef);
+diag("Uploading single file");
+my $result = $up->upload($filename);
 
 ok($result);
 
-$up->url->path('subdir');
+diag("Uploading single file to subdir");
+$up->url->path->append('subdir');
 
 $result = $up->upload($filename, 'someDir');
 
