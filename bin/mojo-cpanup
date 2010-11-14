@@ -13,18 +13,17 @@ require MojoX::CPAN::Uploader;
 
 use subs 'config_file';
 
-my $config = config();
+my %config = config();
 
 my $has_config = 1;
 
-unless ($config) {
+unless (%config) {
    $has_config = 0;
-   $config = {};
 }
 
 GetOptions(
-    'user|u=s'          => \$config->{user},
-    'pass|password|p=s' => \$config->{password}
+    'user|u=s'          => $config{user},
+    'pass|password|p=s' => $config{password}
 );
 
 my ($file, $subdir) = @ARGV;
@@ -33,20 +32,20 @@ usage() unless $file;
 
 die "No such file '$file'" unless -f $file;
 
-unless (defined $config->{user}) {
-    while (!$config->{user}) {
+unless (defined $config{user}) {
+    while (!$config{user}) {
         print "Username: ";
-        $config->{user} = <STDIN>;
-        chomp($config->{user});
+        $config{user} = <STDIN>;
+        chomp($config{user});
     }
 }
 
-unless (defined $config->{password}) {
+unless (defined $config{password}) {
     ReadMode 2;
-    while (!$config->{password}) {
+    while (!$config{password}) {
         print "Password: ";
-        $config->{password} = <STDIN>;
-        chomp($config->{password});
+        $config{password} = <STDIN>;
+        chomp($config{password});
     }
     ReadMode 0;
     print "\n";
@@ -54,7 +53,7 @@ unless (defined $config->{password}) {
 
 my $up = MojoX::CPAN::Uploader->new;
 
-$up->auth($config->{user}, $config->{password});
+$up->auth($config{user}, $config{password});
 
 my $result = $up->upload($file, $subdir);
 
@@ -77,8 +76,8 @@ unless ($has_config || -f config_file) {
     # If no, we just create empty .pause and never ask again
     if (index('yes', $answer) >= 0) {
         print $PAUSE <<END
-user        $config->{user}
-password    $config->{password}
+user        $config{user}
+password    $config{password}
 END
     } 
     close $PAUSE;
@@ -134,7 +133,7 @@ sub config {
         $from_file{$k} = $v;
     }
 
-    return \%from_file;
+    return %from_file;
 }
 
 1;
