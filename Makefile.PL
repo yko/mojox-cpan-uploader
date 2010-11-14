@@ -11,7 +11,7 @@ WriteMakefile(
     PL_FILES      => {},
     PREREQ_PM     => {
         'Mojolicious' => 0.999938,
-        'Term::ReadKey' => 0,
+        'IO::Socket::SSL' => 0,
         'Term::ReadKey' => 0,
         'Getopt::Long' => 0,
         'File::Spec' => 0,
