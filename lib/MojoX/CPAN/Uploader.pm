@@ -25,7 +25,7 @@ __PACKAGE__->attr(
     }
 );
 
-our $VERSION = '0.01_4';
+our $VERSION = '0.01_5';
 
 sub auth {
     my $self = shift;
