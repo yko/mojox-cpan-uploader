@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use ExtUtils::MakeMaker;
+use 5.006;
 
 WriteMakefile(
     NAME          => 'MojoX::CPAN::Uploader',
@@ -10,7 +11,7 @@ WriteMakefile(
     EXE_FILES     => ['bin/mojo-cpanup'],
     PL_FILES      => {},
     PREREQ_PM     => {
-        'Mojolicious' => 0.999938,
+        'Mojolicious' => 0.999939,
         'IO::Socket::SSL' => 0,
         'Term::ReadKey' => 0,
         'Getopt::Long' => 0,
