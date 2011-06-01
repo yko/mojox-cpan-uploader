@@ -9,10 +9,10 @@ use File::Basename;
 
 use base 'Mojo::Base';
 
-require Mojo::Client;
+require Mojo::UserAgent;
 require IO::Socket::SSL;
 
-__PACKAGE__->attr(client => sub { Mojo::Client->new });
+__PACKAGE__->attr(client => sub { Mojo::UserAgent->new });
 __PACKAGE__->attr([qw/user pass/]);
 __PACKAGE__->attr(url => sub { Mojo::URL->new('https://pause.perl.org/pause/authenquery') });
 __PACKAGE__->attr(
@@ -106,7 +106,7 @@ MojoX::CPAN::Uploader - Mojo way to upload on CPAN
 
 =head1 DESCRIPTION
 
-This module uses power of L<Mojo::Client> to upload your files on CPAN.
+This module uses power of L<Mojo::UserAgent> to upload your files on CPAN.
 
 
 =head1 METHODS

@@ -60,9 +60,9 @@ my $up = MojoX::CPAN::Uploader->new;
 
 isa_ok($up, 'MojoX::CPAN::Uploader');
 
-$up->url($t->tx->req->url->clone->path('/auth'));
+$up->url($t->build_url->path('/auth'));
 
-$up->client($t->client);
+$up->client($t->ua);
 $up->auth('user', 'pass');
 
 my ($fh, $filename) = tempfile();
