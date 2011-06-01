@@ -51,7 +51,7 @@ post '/auth/subdir' => sub {
     $self->render_text("OK");
 };
 
-diag("Building transaction with basic auth");
+note "Building transaction with basic auth";
 my $t = Test::Mojo->new;
 
 $t->get_ok('/')->status_is(200);
@@ -67,12 +67,12 @@ $up->auth('user', 'pass');
 
 my ($fh, $filename) = tempfile();
 
-diag("Uploading single file");
+note "Uploading single file";
 my $result = $up->upload($filename);
 
 ok($result);
 
-diag("Uploading single file to subdir");
+note "Uploading single file to subdir";
 $up->url->path->append('subdir');
 
 $result = $up->upload($filename, 'someDir');
