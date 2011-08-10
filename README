@@ -11,14 +11,6 @@ To install this module, run the following commands:
 	make test
 	make install
 
-Alternatively, to install with Module::Build, you can use the following commands:
-
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
-
-
 SYNOPSIS
 
         mojo-cpanup --user=user --pass=pass file.tar.gz
