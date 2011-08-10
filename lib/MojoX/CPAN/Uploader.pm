@@ -6,25 +6,21 @@ use strict;
 use Carp;
 use File::Basename;
 
-use base 'Mojo::Base';
+use Mojo::Base '-base';
 
 require Mojo::UserAgent;
 require IO::Socket::SSL;
 
-__PACKAGE__->attr(client => sub { Mojo::UserAgent->new });
-__PACKAGE__->attr([qw/user pass/]);
-__PACKAGE__->attr(
-    url => sub { Mojo::URL->new('https://pause.perl.org/pause/authenquery') }
-);
-__PACKAGE__->attr(
-    defaults => sub {
-        {   CAN_MULTIPART => 1,
-            SUBMIT_pause99_add_uri_httpupload =>
-              " Upload this file from my disk ",
-            pause99_add_uri_uri => "",
-        };
-    }
-);
+has client => sub { Mojo::UserAgent->new };
+has [qw/user pass/];
+has url => sub { Mojo::URL->new('https://pause.perl.org/pause/authenquery') };
+has defaults => sub {
+    {   CAN_MULTIPART => 1,
+        SUBMIT_pause99_add_uri_httpupload =>
+          " Upload this file from my disk ",
+        pause99_add_uri_uri => "",
+    };
+};
 
 our $VERSION = '0.03';
 
