@@ -22,8 +22,8 @@ unless (%config) {
 }
 
 GetOptions(
-    'user|u=s'          => $config{user},
-    'pass|password|p=s' => $config{password}
+    'user|u=s'          => \$config{user},
+    'pass|password|p=s' => \$config{password}
 );
 
 my ($file, $subdir) = @ARGV;
