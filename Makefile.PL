@@ -12,7 +12,7 @@ author 'Yaroslav Korshak <yko@cpan.org>';
 abstract 'Mojo way to upload files to CPAN';
 license 'perl';
 
-requires 'Mojolicious'     => 1.16;
+requires 'Mojolicious'     => 1.51;
 requires 'IO::Socket::SSL' => 1.43;
 requires 'Term::ReadKey';
 requires 'Getopt::Long';

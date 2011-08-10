@@ -1,9 +1,11 @@
 Revision history for mojox-cpan-uploader
 
-0.03     Wed Aug 10 14:33:59 2011
+0.03     Wed Aug 10 14:35:07 2011
          Fixed parameters handling in mojo-cpanup
          Avoid using experimental Mojo methods in tests
          Use Module::Install
+         Require Mojolicous 1.51. Not all previous versions of Mojo::*
+         support userinfo
 
 0.02_1   Wed Jun 01 16:52:36 2011
          Switched to Mojo::UserAgent (Mojoliicous 1.16)
