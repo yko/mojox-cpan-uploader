@@ -122,7 +122,7 @@ Set user creditionals for PAUSE server. Takes 2 parameters: username and passwor
 
 =item C<upload>
 
-Uploads file to CPAN server. Takes 2 parameters: 
+Uploads file to CPAN server. Takes 2 parameters:
 filename and subdir on CPAN server (optional).
 
 
@@ -135,12 +135,12 @@ L<Mojolicious>
 
 =head1 AUTHOR
 
-Yaroslav Korshak  C<< <ykorshak@gmail.com> >>
+Yaroslav Korshak  C<< <yko@cpan.org> >>
 
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2010, Yaroslav Korshak C<< <ykorshak@gmail.com> >>. All rights reserved.
+Copyright (c) 2010-2011, Yaroslav Korshak C<< <yko@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.
