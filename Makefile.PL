@@ -1,25 +1,36 @@
+#!/usr/bin/env perl
+
 use strict;
 use warnings;
-use ExtUtils::MakeMaker;
-use 5.008007;
 
-WriteMakefile(
-    NAME          => 'MojoX::CPAN::Uploader',
-    AUTHOR        => 'Yaroslav Korshak <ykorshak@gmail.com>',
-    VERSION_FROM  => 'lib/MojoX/CPAN/Uploader.pm',
-    ABSTRACT_FROM => 'lib/MojoX/CPAN/Uploader.pm',
-    EXE_FILES     => ['bin/mojo-cpanup'],
-    PL_FILES      => {},
-    PREREQ_PM     => {
-        'Mojolicious'     => 1.16,
-        'IO::Socket::SSL' => 1.43,
-        'Term::ReadKey'   => 0,
-        'Getopt::Long'    => 0,
-        'File::Spec'      => 0,
-        'IPC::Open3'      => 0,
-        'Test::More'      => 0,
-        'version'         => 0,
-    },
-    dist  => {COMPRESS => 'gzip -9f', SUFFIX => 'gz',},
-    clean => {FILES    => 'mojox-cpan-uploader-*'},
-);
+use inc::Module::Install;
+
+name 'MojoX-CPAN-Uploader';
+
+all_from 'lib/MojoX/CPAN/Uploader.pm';
+author 'Yaroslav Korshak <yko@cpan.org>';
+abstract 'Mojo way to upload files to CPAN';
+license 'perl';
+
+requires 'Mojolicious'     => 1.16;
+requires 'IO::Socket::SSL' => 1.43;
+requires 'Term::ReadKey';
+requires 'Getopt::Long';
+requires 'File::Spec';
+requires 'IPC::Open3';
+
+test_requires 'Test::More';
+
+tests 't/*.t t/*/*.t';
+
+no_index directory => 't';
+install_script 'bin/mojo-cpanup';
+
+resources
+  bugtracker => 'http://github.com/yko/mojox-cpan-uploader/issues',
+  repository => 'http://github.com/yko/mojox-cpan-uploader',
+  license    => 'http://dev.perl.org/licenses/';
+
+auto_install;
+
+WriteAll;
