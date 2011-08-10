@@ -60,7 +60,9 @@ my $up = MojoX::CPAN::Uploader->new;
 
 isa_ok($up, 'MojoX::CPAN::Uploader');
 
-$up->url($t->build_url->path('/auth'));
+my $url = $t->tx->req->url->clone;
+$url->path('/auth');
+$up->url($url);
 
 $up->client($t->ua);
 $up->auth('user', 'pass');
