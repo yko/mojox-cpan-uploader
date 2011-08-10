@@ -1,7 +1,5 @@
 #!/usr/bin/env perl
 
-# Copyright (C) 2010, Yaroslav Korshak.
-
 use strict;
 use warnings;
 
@@ -18,7 +16,7 @@ my %config = config();
 my $has_config = 1;
 
 unless (%config) {
-   $has_config = 0;
+    $has_config = 0;
 }
 
 GetOptions(
@@ -62,14 +60,15 @@ if (ref $result) {
     exit;
 }
 
-print "File '$file' uploaded successfull " . ($subdir ? " to '$subdir'" : '') . "\n";
+print "File '$file' uploaded successfull "
+  . ($subdir ? " to '$subdir'" : '') . "\n";
 
 unless ($has_config || -f config_file) {
 
     # I won't ask user, if can not write...
     return unless open my $PAUSE, '>', config_file;
 
-    print "Save user/password to '" . config_file . '"? [Y/n]'; 
+    print "Save user/password to '" . config_file . '"? [Y/n]';
     my $answer = lc(<STDIN>);
     $answer =~ s/^\s+|\s+$//g;
 
@@ -79,7 +78,7 @@ unless ($has_config || -f config_file) {
 user        $config{user}
 password    $config{password}
 END
-    } 
+    }
     close $PAUSE;
     chmod(oct("0600"), config_file);
 }
@@ -100,7 +99,7 @@ END
 }
 
 sub home {
-    my $home = '.';     # Living under bridge
+    my $home = '.';    # Living under bridge
 
     return $ENV{HOME} if $ENV{HOME};
 
@@ -117,7 +116,7 @@ sub config {
 
     $filename ||= config_file;
 
-    return    unless -e $filename;
+    return unless -e $filename;
     return {} unless -r $filename;
 
     open my $pauserc, '<', $filename

@@ -1,9 +1,8 @@
-# Copyright (C) 2010, Yaroslav Korshak.
- 
 package MojoX::CPAN::Uploader;
 
 use warnings;
 use strict;
+
 use Carp;
 use File::Basename;
 
@@ -14,7 +13,9 @@ require IO::Socket::SSL;
 
 __PACKAGE__->attr(client => sub { Mojo::UserAgent->new });
 __PACKAGE__->attr([qw/user pass/]);
-__PACKAGE__->attr(url => sub { Mojo::URL->new('https://pause.perl.org/pause/authenquery') });
+__PACKAGE__->attr(
+    url => sub { Mojo::URL->new('https://pause.perl.org/pause/authenquery') }
+);
 __PACKAGE__->attr(
     defaults => sub {
         {   CAN_MULTIPART => 1,
@@ -31,7 +32,7 @@ sub auth {
     my $self = shift;
 
     croak("Basic authorization user name can't contain ':'")
-        if $_[0] =~ /:/;
+      if $_[0] =~ /:/;
 
     $self->user(shift);
     $self->pass(shift);
