@@ -1,5 +1,9 @@
 Revision history for mojox-cpan-uploader
 
+0.031    Sun Aug 14 20:57:50 2011
+         Follow Mojolicous 1.76 Mojo::Path->append removal
+         perlcritic fixes
+         
 0.03     Wed Aug 10 14:44:53 2011
          Fixed parameters handling in mojo-cpanup
          Avoid using experimental Mojo methods in tests
