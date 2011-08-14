@@ -3,11 +3,13 @@
 use strict;
 use warnings;
 
+require 5.010;
+
 use Term::ReadKey;
 use Getopt::Long;
 use File::Spec;
 
-require MojoX::CPAN::Uploader;
+use MojoX::CPAN::Uploader;
 
 use subs 'config_file';
 
@@ -49,7 +51,7 @@ unless (defined $config{password}) {
     print "\n";
 }
 
-my $up = MojoX::CPAN::Uploader->new;
+my $up = MojoX::CPAN::Uploader->new();
 
 $up->auth($config{user}, $config{password});
 
