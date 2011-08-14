@@ -75,7 +75,7 @@ my $result = $up->upload($filename);
 ok($result);
 
 note "Uploading single file to subdir";
-$up->url->path->append('subdir');
+$up->url->path($up->url->path . '/subdir');
 
 $result = $up->upload($filename, 'someDir');
 
