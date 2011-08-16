@@ -1,5 +1,8 @@
 Revision history for mojox-cpan-uploader
 
+0.032    Tue Aug 16 10:46:27 2011
+         perlcritic fixes
+
 0.031    Sun Aug 14 20:57:50 2011
          Follow Mojolicous 1.76 Mojo::Path->append removal
          perlcritic fixes

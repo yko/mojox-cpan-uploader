@@ -1,12 +1,25 @@
 #!perl
 
+use strict;
+use warnings;
+
 use Test::More;
-eval { require Test::Perl::Critic };
+use File::Spec;
+
+eval { require Test::Perl::Critic; };
 
 if ($@) {
-    Test::More::plan(
-        skip_all => "Test::Perl::Critic required for testing PBP compliance"
-    );
+    plan(
+        skip_all => 'Test::Perl::Critic required for testing PBP compliance');
 }
 
-Test::Perl::Critic::all_critic_ok();
+my @config = ();    # Arguments for Perl::Critic->new() go here!
+my $rcfile = File::Spec->catfile('t', 'perlcriticrc');
+
+if (-f $rcfile) {
+    push @config, -profile => $rcfile;
+}
+
+Test::Perl::Critic->import(@config);
+
+all_critic_ok();
