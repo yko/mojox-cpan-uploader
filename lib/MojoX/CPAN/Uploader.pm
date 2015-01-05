@@ -40,9 +40,9 @@ sub upload {
 
     croak "Auth info required!" unless $self->user;
 
-    my $tx = $self->client->post_form(
-        $url,
-        {   %{$self->defaults},
+    my $tx = $self->client->post(
+        $url, form => {
+            %{$self->defaults},
             HIDDENNAME                 => $self->user,
             pause99_add_uri_upload     => basename($file),
             pause99_add_uri_httpupload => {file => $file},
