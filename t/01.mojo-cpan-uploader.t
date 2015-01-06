@@ -5,7 +5,7 @@ use Test::Mojo;
 use File::Temp qw/ tempfile /;
 
 plan skip_all => 'working sockets required for this test!'
-  unless Mojo::IOLoop->new->generate_port;
+  unless Mojo::IOLoop::Server->new->generate_port;
 
 app->log->path(undef);
 app->log->level('error');
@@ -15,7 +15,7 @@ BEGIN {
 }
 
 any '/' => sub {
-    shift->render_text("OK");
+    shift->render(text => "OK");
 };
 
 post '/auth' => sub {
