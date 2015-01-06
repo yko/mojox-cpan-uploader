@@ -1,22 +1,10 @@
 NAME
 
-MojoX::CPAN::Uploader - Mojo way to upload on CPAN
+MojoX::CPAN::Uploader - DEPRECATED Mojo way to upload on CPAN
 
-INSTALLATION
+PLEASE NOTE THAT THIS MODULE IS DEPRECATED AND NO LONGER MAINTAINED.
 
-To install this module, run the following commands:
-
-	perl Makefile.PL
-	make
-	make test
-	make install
-
-SYNOPSIS
-
-        mojo-cpanup --user=user --pass=pass file.tar.gz
-        mojo-cpanup --user=user file.tar.gz
-        mojo-cpanup file.tar.gz
-        mojo-cpanup file.tar.gz subdir
+Please use CPAN::Uploader Mojolicious::Command::cpanify instead.
 
 
 DEPENDENCIES
