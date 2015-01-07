@@ -1,5 +1,8 @@
 Revision history for mojox-cpan-uploader
 
+0.034    Wed Jan 07 14:44:52 2015
+         Added x_deprecated metadata bit
+
 0.033    Tue Jan 06 17:49:12 2015
          Adjusted for most recent Mojolicious changes
          Module is DEPRECATED in favor of Mojolicious::Command::cpanify

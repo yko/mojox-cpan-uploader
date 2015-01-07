@@ -35,4 +35,6 @@ resources
 
 auto_install;
 
+makemaker_args(META_MERGE => {x_deprecated => 1});
+
 WriteAll;

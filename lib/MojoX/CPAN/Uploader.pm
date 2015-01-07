@@ -22,7 +22,7 @@ has defaults => sub {
     };
 };
 
-our $VERSION = '0.033';
+our $VERSION = '0.034';
 
 sub auth {
     my $self = shift;
