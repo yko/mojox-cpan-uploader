@@ -1,5 +1,8 @@
 Revision history for mojox-cpan-uploader
 
+0.035    
+         Switch to ExtUtils::MakeMaker to apply the x_deprecated metadata
+
 0.034    Wed Jan 07 14:44:52 2015
          Added x_deprecated metadata bit
 
