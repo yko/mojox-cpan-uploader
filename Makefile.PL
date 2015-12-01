@@ -1,40 +1,43 @@
 #!/usr/bin/env perl
 
+use 5.010001;
+
 use strict;
 use warnings;
 
-use inc::Module::Install;
+use ExtUtils::MakeMaker;
 
-name 'MojoX-CPAN-Uploader';
+WriteMakefile(
+  NAME         => 'MojoX::CPAN::Uploader',
+  VERSION_FROM => 'lib/MojoX/CPAN/Uploader.pm',
+  ABSTRACT     => 'Mojo way to upload files to CPAN',
+  AUTHOR       => 'Yaroslav Korshak <yko@cpan.org>',
+  LICENSE      => 'perl',
+  META_MERGE   => {
+    dynamic_config => 0,
+    'meta-spec'    => {version => 2},
+    no_index       => {directory => ['t']},
+    prereqs        => {runtime => {requires => {perl => '5.010001'}}},
+    resources      => {
+      license    => ['http://dev.perl.org/licenses/'],
+      repository => {
+        type => 'git',
+        web => 'http://github.com/yko/mojox-cpan-uploader',
+        url => 'http://github.com/yko/mojox-cpan-uploader.git',
+      },
+      bugtracker => {web => 'http://github.com/yko/mojox-cpan-uploader/issues' },
+    },
+    x_deprecated => 1,
+  },
+  PREREQ_PM => {
+    'Mojolicious' => '1.51',
+    'IO::Socket::SSL' => 1.43,
+    'Term::ReadKey' => 0,
+    'Getopt::Long' => 0,
+    'File::Spec' => 0,
+    'IPC::Open3' => 0,
+  },
+  EXE_FILES => ['bin/mojo-cpanup'],
+  test => {TESTS => 't/*.t t/*/*.t'}
+);
 
-all_from 'lib/MojoX/CPAN/Uploader.pm';
-author 'Yaroslav Korshak <yko@cpan.org>';
-abstract 'Mojo way to upload files to CPAN';
-license 'perl';
-
-perl_version '5.010';
-
-requires 'Mojolicious'     => 1.51;
-requires 'IO::Socket::SSL' => 1.43;
-requires 'Term::ReadKey';
-requires 'Getopt::Long';
-requires 'File::Spec';
-requires 'IPC::Open3';
-
-test_requires 'Test::More';
-
-tests 't/*.t t/*/*.t';
-
-no_index directory => 't';
-install_script 'bin/mojo-cpanup';
-
-resources
-  bugtracker => 'http://github.com/yko/mojox-cpan-uploader/issues',
-  repository => 'http://github.com/yko/mojox-cpan-uploader',
-  license    => 'http://dev.perl.org/licenses/';
-
-auto_install;
-
-makemaker_args(META_MERGE => {x_deprecated => 1});
-
-WriteAll;
